@@ -1,6 +1,9 @@
 # Biblioteca de códigos JavaScript
 
-#Créditos:
+Códigos e exemplos de uso
+
+
+# Créditos:
 
 A pasta /linguagemProgramacao é uma cópia do reposítório do professor Fausto G. Cintra @fgcintra 
 https://github.com/fgcintra/2not-2018-2
