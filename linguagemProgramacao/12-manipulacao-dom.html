@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf8" />
+      <title>Página de Teste</title>
+   </head>
+   <body>
+      <!-- Isto é um comentário HTML --> 
+      <h1>Minhas linguagens de programação preferidas</h1>
+
+      <ol id="lista"> <!-- lista ordenada -->
+         <li id="item_js">Javascript</li> <!-- item da lista -->
+         <li id="item_php">PHP</li>
+         <li id="item_delphi">Delphi</li>
+         <li id="item_c">C</li>
+         <li id="item_cpp">C++</li>
+         <li id="item_csharp">C#</li>
+         <li id="item_vb">Visual Basic</li>
+      </ol>
+
+      <p>Este é o primeiro parágrafo de texto.</p>
+      
+      <hr /> <!-- Linha horizontal -->
+      
+      <p>Este é o segundo parágrafo de texto.</p>
+      
+      <button>Isto é um botão que não faz nada.</button>
+      
+      <div>Isto é uma divisão lógica (bloco) de uma página HTML.</div>
+      
+      <p>Este é o terceiro parágrafo de texto.</p>
+
+      <button id="btnOK">Isto outro botão que não faz nada.</button>
+
+      <script>
+
+         'use strict'; // Modo "chato" do Javascript
+      
+         // Quais elementos eu tenho dentro do body do documento?
+         console.log(document.body.children); // children = filhos
+
+         // Quantos elementos tem o body do documento?
+         console.log(document.body.children.length);
+
+         // Alterando o texto do H1 (que é o primeiro filho de body)
+         document.body.children[0].innerText = 'Algumas linguagens de programação';
+         document.body.firstElementChild.innerText = 'Linguagens populares';
+
+         // Exibindo o nome da tag do último filho do body
+         console.log(document.body.children[document.body.children.length - 1].tagName);
+         console.log(document.body.lastElementChild.tagName);
+
+         // Isolando um determinado filho do body
+         let listaOrd = document.body.children[1]; // ol está na segunda posição
+
+         // Quantos filhos (itens) tem a lista ordenada?
+         console.log(`A lista ordenada tem ${listaOrd.children.length} filhos (itens)`);
+
+         // Alterando o texto do 5º item da lista
+         listaOrd.children[4].innerText = 'Java (era C++)';
+
+         // Isolando todos os elementos de um deterinado tipo (tag)
+         // getElementsByTagName() retorna um vetor contendo apenas
+         // os elementos da tag especificada
+         let parags = document.getElementsByTagName('p');
+         let botoes = document.getElementsByTagName('button');
+         
+         let spans = document.getElementsByTagName('span');
+         console.log('Vetor com todos os <span> do documento:');
+         console.log(spans);
+
+         let h1s = document.getElementsByTagName('h1');
+         console.log('Vetor com todos os <h1> do documento:');
+         console.log(h1s);
+
+         // Manipulando o segundo parágrafo do documento
+         parags[1].innerText = parags[1].innerText.toUpperCase();
+
+         // LOCALIZANDO UM ELEMENTO PELO SEU ID
+         // getElementById(): procura por um único elemento identificado
+         // pelo seu id. Retorna o elemento encontrado ou undefined.
+         let b = document.getElementById('btnOK');
+         b.innerText = 'OK';
+
+         /**********************************************************/
+
+         // INSERINDO UM NOVO ELEMENTO NO MEIO DA LISTA
+
+         // Passo 1: obter a lista
+         let lista = document.getElementById('lista');
+
+         // Passo 2: criando um novo elemento (item de lista - li)
+         let item_kotlin = document.createElement('li');
+
+         // Passo 3: localizando o item ANTES do qual o novo item entrará
+         let item_delphi = document.getElementById('item_delphi');
+
+         // Passo 4: inserindo o novo elemento no lugar designado
+         // (ANTES do Delphi)
+         lista.insertBefore(item_kotlin, item_delphi);
+
+         // Passo 5: com o novo elemento já no lugar, podemos ajustar
+         // suas propriedades
+         item_kotlin.id = 'item_kotlin';
+         item_kotlin.innerText = 'Kotlin';
+
+         /************************************************************************
+
+            querySelector() e querySelectorAll()
+
+            Essas duas funções usam as mesmas convenções do CSS para localizar
+            elementos na página
+
+         ************************************************************************/
+
+         // Usando querySelector() para buscar um elemento pelo seu id
+         // O prefixo # indica que a busca é por id
+         let item_js = document.querySelector('#item_js');
+
+         // Usando querySelector() para buscar o primeiro elemento de seu tipo
+         // Nesse caso, não há prefixo
+         let primeiroParag = document.querySelector('p');
+
+         // Usando querySelectorAll() para buscar TODOS os itens da lista ordenada
+         let listaItens = lista.querySelectorAll('li');
+
+         /*
+            
+            Inserção de elemento filho ao final do pai: appendChild()
+
+         */
+
+         let novoParag = document.createElement('p');
+         document.body.appendChild(novoParag);
+         novoParag.innerText = 'Este parágrafo foi criado dinamicamente via Javascript';
+
+         // createElement() sempre é chamado no document
+         let novoItem = document.createElement('li');
+         lista.appendChild(novoItem);
+         novoItem.innerText = 'Objective-C';
+
+         /*
+
+            Exclusão de elemento: removeChild()
+         
+         */
+
+         // Removendo o item da linguagem C da lista
+         lista.removeChild(document.querySelector('#item_c'));
+
+         // Removendo o terceiro parágrafo do body
+         document.body.removeChild(parags[2]);
+
+         /*
+
+            Trocando um elemento por outro: replaceChild()
+
+         */
+
+         // Há apenas uma <div> neste documento
+         let div = document.querySelector('div');
+         let novoParag2 = document.createElement('p');
+         document.body.replaceChild(novoParag2, div);
+
+         novoParag2.innerText = 'Havia uma <div> aqui, agora é <p>.';
+      
+      </script>      
+
+   </body>
+
+</html>

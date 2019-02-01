@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf8" />
+      <title>Página de Teste</title>
+      <script>
+
+         'use strict'; // Modo "chato" do Javascript
+
+         // Loop while
+         // Número mínimo de repetições: 0
+         // Quantidade de repetições indeterminada
+         let aleatorio = 0;
+
+         while(aleatorio != 17) {
+            // Math.floor(): retira as casas decimais de um número real
+            // Math.random(): gera um número aleatório entre 0 e 1
+
+            aleatorio = Math.floor((Math.random() * 10) + 10);
+            document.write(aleatorio + '<br>');
+         }
+
+         // Loop do...while
+         // Número mínimo de repetições: 1
+         // Quantidade de repetições indeterminada
+         let saudacao;
+
+         do {
+            saudacao = prompt('Diga oi:');
+         } while (saudacao != 'oi');
+
+         let num;
+         do {
+            num = parseInt(prompt('Informe um número:'));
+         } while(isNaN(num));
+
+         // Loop for
+         // Os parênteses do loop for são divididos em três partes:
+         // 1) Inicialização da variável de controle
+         // 2) Condição durante a qual, enquanto verdadeira, o loop é executado
+         // 3) Incremento (ou decremento) da variável de controle
+
+         // Imprime os números de 1 a 100
+         for(let i = 1; i <= 100; i++) {
+            document.write(i + '<br>');
+         }
+
+         // Imprime os números de 100 a 1
+         for(let i = 100; i >= 1; i--) {
+            document.write(i + '<br>');
+         }
+
+         // Imprime os números de 1 a 100,
+         // saltando de 2 em 2
+         for(let i = 1; i <= 100; i += 2) {
+            document.write(i + '<br>');   
+         }
+
+      </script>
+   </head>
+   <body>
+      <!-- Isto é um comentário HTML --> 
+      <h1>Título da página</h1>
+      <p>Isto é um parágrafo.</p>
+   </body>
+</html>

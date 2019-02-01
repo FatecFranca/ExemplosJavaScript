@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>percorre tabela</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+<form>
+    <div class="cadastro-produtos">
+        <labe>Produto:</label>
+        <input type="text" id="produto">
+        <labe>Quantidade:</label>
+        <input type="text" id="quantidade">
+        <button onclick="produtos.adicionar(event);">Adicionar</button>
+    </div>
+    <table class="lista-produtos">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody id="lstProdBody">
+            <!-- Inclusão dinâmica -->
+        </tbody>
+    </table>
+    <button onclick="produtos.send(event);">Confirmar Pedido</button>
+    <div id="showJson"></div>
+</form>
+ 

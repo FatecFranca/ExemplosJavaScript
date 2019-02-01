@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+.cadastro-produtos {
+    background-color: lightgray;
+    height: 40px;
+    padding: 10px;
+    width: 100%;
+}
+.lista-produtos {
+    width: 100%;
+}
+.lista-produtos thead tr th {
+    background-color: #fbf6f7;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf8" />
+      <title>Página de Teste</title>
+      <script>
+
+         'use strict'; // Modo "chato" do Javascript
+
+         let estuda = confirm('Estuda?');
+         let dorme = confirm('Dorme?');
+         let vida_social = confirm('Tem vida social?');
+
+         if(dorme && vida_social && !estuda) {
+            document.write('Vagabundo(a)');
+         }
+         else if(estuda && dorme && !vida_social) {
+            document.write('Nerd');
+         }
+         else if(estuda && vida_social && !dorme) {
+            document.write('Zumbi');
+         }
+         else if(estuda && vida_social && dorme) {
+            document.write('NINJA');
+         }
+         else if((estuda && !dorme && !vida_social) ||
+                 (dorme && !estuda && !vida_social) ||
+                 (vida_social && !estuda && !dorme)) {
+            document.write('RESPOSTAS INVÁLIDAS!! Pelo menos duas respostas devem ser verdadeiras');
+         }
+         else { // Tudo falso
+            document.write('Você NÃO existe!');
+         } 
+
+      </script>
+   </head>
+   <body>
+      <!-- Isto é um comentário HTML --> 
+      <h1>Título da página</h1>
+      <p>Isto é um parágrafo.</p>
+   </body>
+</html>

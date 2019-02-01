@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf8" />
+      <title>Página de Teste</title>
+      <script>
+
+         'use strict'; // Modo "chato" do Javascript
+
+         // Chamada de função antes da declaração
+         alert('3 elevado a 4 é ' + potencia(3, 4));
+         
+         // Declaração de função
+         function potencia(base, exp) {
+            let res = 1;
+            for(let i = 0; i < exp; i++) {
+               res *= base;
+            }
+            return res;
+         }
+
+         // Chamada de função depois da declaração
+         alert('2 elevado a 3 é ' + potencia(2, 3));
+
+         /************************************************/
+
+         // NÃO É POSSÍVEL CHAMAR UMA EXPRESSÃO ANTES DE SUA DECLARAÇÃO
+         // alert(fat(7)); // Vai dar erro
+
+         // Expressão de função
+         let fat = function (n) {
+            let res = 1;
+            for(let i = n; i > 1; i--) {
+               res *= i;
+            }
+            return res;
+         }
+
+         // Chamada à expressão de função
+         alert(fat(5));
+
+         /*************************************************/
+
+         // Passando funções como parâmetros para outras funções
+         
+         let mensagemOK = function(msg) {
+            alert('OK! OK! OK!: ' + msg);
+         }
+
+         let mensagemErro = function(msg) {
+            alert('ERRO!: ' + msg);
+         }
+
+         let validarNumero = function(funcOK, funcErro) {
+            let num = prompt('Informe um número: ');
+
+            if(isNaN(num)) {
+               funcErro('Isto não é um número!');
+            }
+            else {
+               funcOK(num + ' é um número válido!')
+            }
+         }
+
+         validarNumero(mensagemOK, mensagemErro);
+
+         /*****************************************************/
+
+         // Parâmetro opcional de função
+         // OBS: funciona tanto com declaração como com expressão de função
+
+         // exp é um parâmetro opcional. Se não for passado,
+         // a função entenderá que seu valor é 2.
+         function potenc(base, exp = 2) {
+            let res = 1;
+            for (let i = 0; i < exp; i++) {
+               res *= base;
+            }
+            return res;
+         }
+
+         alert(potenc(4)); // 4^2
+         alert(potenc(4, 3)); // 4^3
+
+         let separador = function(carac, vezes = 10, espaco = false) {
+            if(espaco) {
+               carac += ' ';
+            }
+            document.write(carac.repeat(vezes) + '<br>');
+         }
+
+         separador('*');
+         separador('-', 40);
+         separador('/', 10, true);
+
+         // Não é possível omitir um parâmetro intermediário opcional
+         // separador('+', , true); -> não funciona
+
+      </script>
+   </head>
+   <body>
+      <!-- Isto é um comentário HTML --> 
+      <h1>Título da página</h1>
+      <p>Isto é um parágrafo.</p>
+   </body>
+</html>

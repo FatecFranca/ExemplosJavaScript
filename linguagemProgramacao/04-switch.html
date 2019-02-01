@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf8" />
+      <title>Página de Teste</title>
+      <script>
+
+         'use strict'; // Modo "chato" do Javascript
+
+         let vogal = prompt('Informe uma vogal: ');
+
+         // A função da instrução switch é testar uma única
+         // variável contra uma série de valores         
+         switch(vogal) {
+            case 'A':
+            case 'a':
+               alert('Primeira vogal');
+               break;
+
+            case 'E':
+            case 'e':
+               alert('Segunda vogal');
+               break;
+
+            case 'I':
+            case 'i':
+               alert('Terceira vogal');
+               break;
+
+            case 'O':
+            case 'o':
+               alert('Quarta vogal');
+               break;
+
+            case 'U':
+            case 'u':
+               alert('Quinta vogal');
+               break;
+
+            default:
+               alert('EI, ISSO NÃO É UMA VOGAL!');
+         }
+
+         alert('Estou fora do switch');
+
+      </script>
+   </head>
+   <body>
+      <!-- Isto é um comentário HTML --> 
+      <h1>Título da página</h1>
+      <p>Isto é um parágrafo.</p>
+   </body>
+</html>
