@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="5;url=exFila.html">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="src/index.html" class="brand-logo">Fila</a>
+    </div>
+  </nav>
+</div>
+
+<script>
+ var fila = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    document.writeln(" fila completa = " + fila);
+    
+	function limpar() {
+      while (fila.length > 0) {
+        fila.pop();
+      }
+    }
+    limpar();
+
+    document.writeln("<br /> Função limpar = " + fila);
+
+        document.writeln("<br /> <hr> ");
+    
+    var fila2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    //remover do final :
+    function final(){
+      x = fila2.pop();
+      document.writeln("Função remover do final(POP)= " + fila2);
+    }
+    final();
+    final();
+
+document.writeln("<br><hr>")
+var fila3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+ //adicionar no final :
+ function afinal(n){
+      x = fila3.push(n);
+      document.writeln("<br>Adicionando no final(PUSH)= " + fila3);
+    }
+    afinal(15);
+    afinal(20);
+
+document.writeln("<br><hr>")
+
+var fila4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function rcomeco(){
+      x = fila4.shift();
+      // fila4.unshift(x); coloca denovo
+      document.writeln("Função remove do começo = " + fila4);
+      document.writeln("<br> o unshift insere novamente no inicio");
+    }
+    rcomeco();
+    document.writeln("<br><hr>")
+
+</script>
+
+    <body>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    </body>
+  </html>
+        

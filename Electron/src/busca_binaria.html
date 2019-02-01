@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+    
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Estrutura de Dados</title>
+</head>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">Estrutura de Dados</a>
+        </div>
+    </nav>
+</div>
+<body>
+    <h3>Inserido as opções na árvore:</h3>
+    <br>
+    1, 2, 7, 5, 9, 10, 3, 0
+    <br>
+    e usando a função de busca binária para pesquisar o número 3 o resultado é = 
+    
+    <script>
+        
+        function ArvoreBinaria() {
+            this.noRaiz = null;
+        }
+        
+        ArvoreBinaria.prototype = {
+            
+            constructor: ArvoreBinaria,
+            
+            // Adiciona um novo valor
+            adicionar: function(valor) {
+                
+                // Cria um novo objeto para armazenar o valor atual
+                var novoNo = {
+                    valor: valor,
+                    esq: null,
+                    dir: null
+                };
+                
+                var noAtual;
+                
+                if (this.noRaiz == null) {
+                    // Caso a árvore esteja vazia
+                    this.noRaiz = novoNo;
+                } else {
+                    noAtual = this.noRaiz;
+                    
+                    while (true) {
+                        if (valor < noAtual.valor) {
+                            // Atribuímos um novo nó a esquerda caso não exista
+                            // ou seguimos adiante usando o nó da esquerda como nó atual
+                            if (noAtual.esq == null) {
+                                noAtual.esq = novoNo;
+                                break;
+                            } else {
+                                noAtual = noAtual.esq;
+                            }
+                        } else if (valor > noAtual.valor) {
+                            // Atribuímos um novo nó a direita caso não exista
+                            // ou seguimos adiante usando o nó da direita como nó atual
+                            if (noAtual.dir == null) {
+                                noAtual.dir = novoNo;
+                                break;
+                            } else {
+                                noAtual = noAtual.dir;
+                            }
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            },
+            
+            // Verifica se o valor existe ou não na árvore
+            contem: function(valor) {
+                var encontrado = false,
+                noAtual = this.noRaiz;
+                
+                while (!encontrado && noAtual) {
+                    
+                    // Se o valor é menor que o do nó atual, atribua o nó da esquerda
+                    if (valor < noAtual.valor) {
+                        noAtual = noAtual.esq;
+                    }
+                    
+                    // Se o valor é maior que o do nó atual, atribua o nó da direita
+                    else if (valor > noAtual.valor) {
+                        noAtual = noAtual.dir;
+                    }
+                    
+                    // Valor do nó atual é igual ao valor passado como parâmetro
+                    else {
+                        encontrado = true;
+                    }
+                }
+                
+                return document.write(encontrado);
+                
+            },
+            percorrer: function(no) {
+                if (no) {
+                    this.percorrer(no.esq);
+                    console.log("nó do valor = " + no.valor);
+                    this.percorrer(no.dir);
+                }
+            },
+            
+        };
+        
+        var arvore = new ArvoreBinaria();
+        arvore.adicionar(1);
+        arvore.adicionar(2);
+        arvore.adicionar(7);
+        arvore.adicionar(5);
+        arvore.adicionar(9);
+        arvore.adicionar(10);
+        arvore.adicionar(3);
+        arvore.adicionar(0);
+        
+        arvore.contem(3);
+    </script>   
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 Copyright: <a class="grey-text text-lighten-4 right" href="http://www.johnnyvaz.com.br/">Johnny Vaz</a>
+                </div>
+            </div>
+        </footer>
+        
+        
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+</body>
+
+</html>

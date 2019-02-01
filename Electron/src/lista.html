@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+	<meta charset="UTF-8">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+	
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Estrutura de Dados</title>
+    <script language="javascript" type="text/javascript">
+        
+        function List(capacity) {
+            var collection = [];
+            
+            if (capacity != null) {
+                collection[capacity];
+            }
+            
+            ///busca um elemento
+            this.GetItem = function (index) {
+                if (index <= collection.length - 1) {
+                    return collection[index];
+                }
+                else {
+                    alert("Não encontrado");
+                }
+            }
+            
+            ///insere um elemento em uma posição
+            this.SetItem = function (index, item) {
+                if (index <= collection.length - 1) {
+                    collection[index] = item;
+                }
+                else {
+                    alert("Posição não existente! verifique.");
+                }
+            }
+            
+            ///Adiciona um elemento no fin da lista
+            this.Add = function (item) {
+                collection[collection.length] = item;
+            }
+            
+            ///Adiciona os elementos da coleção especificada ao final das coleções.
+            this.AddRange = function (items) {
+                for (var i = 0; i < items.Count(); i++) {
+                    collection[collection.length] = items.GetItem(i);
+                }
+            }
+            
+            ///Insere um elemento no System.Collections.Generic.List <T> no índice especificado.
+                this.Insert = function (pos, item) {
+                    if (pos <= collection.length - 1) {
+                        collection.splice(pos, 0, item);
+                    }
+                    else {
+                        throw "Index must be within the bounds of the List";
+                    }
+                }
+                
+                ///limpa a lista
+                this.Clear = function () {
+                    collection = [];
+                }
+                
+                ///tamanho da lista.
+                this.Count = function () {
+                    return collection.length;
+                }
+                
+                ///comparação de elementos
+                this.Equal = function (x, y) {
+                    return (x === y);
+                }
+                
+                ///busca elementos
+                this.Find = function (obj) {
+                    var index = -1;
+                    
+                    for (var i = 0; i < collection.length; i++) {
+                        var item = collection[i];
+                        
+                        if (this.Equal(item, obj)) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    
+                    return index;
+                }
+                
+                ///verifica se existe
+                this.Exists = function (obj) {
+                    var isFind = false;
+                    
+                    if (this.Find(obj) > -1) {
+                        isFind = true;
+                    }
+                    
+                    return isFind;
+                }
+                
+                ///Executa a ação especificada em cada elemento das listas
+                this.ForEach = function (action) {
+                    for (var i = 0; i < collection.length; i++) {
+                        var item = collection[i];
+                        
+                        action(item);
+                    }
+                }
+                
+                ///Remove o elemento no índice especificado
+                this.RemoveAt = function (index) {
+                    collection.splice(index, 1);
+                }
+                
+                ///remove vários elementos
+                this.RemoveRange = function (index, count) {
+                    collection.splice(index, count);
+                }
+                
+                ///
+                this.GetRange = function (index, count) {
+                    newList = new List();
+                    
+                    var indexCount = 0;
+                    
+                    for (var i = index; i < collection.length; i++) {
+                        var item = collection[i];
+                        
+                        if (indexCount < count) {
+                            newList.Add(item);
+                        }
+                        else {
+                            break;
+                        }
+                        
+                        indexCount++;
+                    }
+                    
+                    return newList;
+                }
+            }
+            
+            
+        </script>
+    </head>
+
+    <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="index.html" class="brand-logo">Estrutura de Dados</a>
+                </div>
+            </nav>
+        </div>
+
+    <body>
+      <h3>Códigos de funcionamento da Lista Encadeada</h3>
+
+        <br>
+        <pre>
+            function List(capacity) {
+                var collection = [];
+    
+                if (capacity != null) {
+                    collection[capacity];
+                }
+                ///busca um elemento
+                this.GetItem = function (index) {
+                    if (index <= collection.length - 1) {
+                        return collection[index];
+                    }
+                    else {
+                        alert("Não encontrado");
+                    }
+                }
+                ///insere um elemento em uma posição
+                this.SetItem = function (index, item) {
+                    if (index <= collection.length - 1) {
+                        collection[index] = item;
+                    }
+                    else {
+                        alert("Posição não existente! verifique.");
+                    }
+                }
+                ///Adiciona um elemento no fin da lista
+                this.Add = function (item) {
+                    collection[collection.length] = item;
+                }
+                ///Adiciona os elementos da coleção especificada ao final das coleções.
+                this.AddRange = function (items) {
+                    for (var i = 0; i < items.Count(); i++) {
+                        collection[collection.length] = items.GetItem(i);
+                    }
+                }
+                ///Insere um elemento no System.Collections.Generic.List <T> no índice especificado.
+                    this.Insert = function (pos, item) {
+                        if (pos <= collection.length - 1) {
+                            collection.splice(pos, 0, item);
+                        }
+                        else {
+                            throw "Index must be within the bounds of the List";
+                        }
+                    }   
+                    ///limpa a lista
+                    this.Clear = function () {
+                        collection = [];
+                    }
+                    ///tamanho da lista.
+                    this.Count = function () {
+                        return collection.length;
+                    }
+                    ///comparação de elementos
+                    this.Equal = function (x, y) {
+                        return (x === y);
+                    }
+                    ///busca elementos
+                    this.Find = function (obj) {
+                        var index = -1;
+                        
+                        for (var i = 0; i < collection.length; i++) {
+                            var item = collection[i];
+                            
+                            if (this.Equal(item, obj)) {
+                                index = i;
+                                break;
+                            }
+                        }   
+                        return index;
+                    }
+                    ///verifica se existe
+                    this.Exists = function (obj) {
+                        var isFind = false;
+                        
+                        if (this.Find(obj) > -1) {
+                            isFind = true;
+                        }
+                        
+                        return isFind;
+                    }
+                    ///Executa a ação especificada em cada elemento das listas
+                    this.ForEach = function (action) {
+                        for (var i = 0; i < collection.length; i++) {
+                            var item = collection[i];
+                            
+                            action(item);
+                        }
+                    }
+                    ///Remove o elemento no índice especificado
+                    this.RemoveAt = function (index) {
+                        collection.splice(index, 1);
+                    }
+                    ///remove vários elementos
+                    this.RemoveRange = function (index, count) {
+                        collection.splice(index, count);
+                    }
+                    ///
+                    this.GetRange = function (index, count) {
+                        newList = new List();
+                        
+                        var indexCount = 0;
+                        
+                        for (var i = index; i < collection.length; i++) {
+                            var item = collection[i];
+                            
+                            if (indexCount < count) {
+                                newList.Add(item);
+                            }
+                            else {
+                                break;
+                            }
+                            
+                            indexCount++;
+                        }
+                        
+                        return newList;
+                    }
+                }
+        </pre>
+        <h3>Até aqui é o código para manipulação da lista encadeada</h3>
+        <strong>agora o código é para uso das funções:
+        </strong>
+        <br>
+        
+        <!-- <script language="javascript" type="text/javascript" src="List.js"></script> -->
+        <script language="javascript" type="text/javascript">
+
+                var lista1 = new List();
+                var lista2 = new List();
+                document.writeln("função add = adicionando itens<br>");
+                </script>
+                <pre>
+                     lista1.Add('Item 1');
+                     lista2.Add('Item Sub 1');
+                     lista2.Add('Item Sub 3');
+                </pre>
+                <script>
+
+                lista1.Add('Item 1');
+                lista2.Add('Item Sub 1');
+                lista2.Add('Item Sub 3');
+                
+                var itemSub2 = 'Item Sub 2';
+                document.writeln("função insert = adicionando itens na posição <br>");
+                lista2.Insert(1, itemSub2);
+
+                document.writeln("função AddRange = encadeando a lista <br>");
+                
+                lista1.AddRange(lista2);
+            </script>
+            <pre>
+                    lista1.AddRange(lista2);
+            </pre>
+            <script>
+            
+                document.writeln("função Count = retornando a lista");
+                for (var i = 0; i < lista1.Count(); i++) {
+                    document.writeln(lista1.GetItem(i) + "<br>");
+                }
+            </script>
+            <pre>
+                    Verificando se existe o item na lista
+                
+                    if (lista2.Exists(itemSub2)) {
+                        document.writeln('Sim');
+                    }
+                    else {
+                        document.writeln('Não');
+                    }
+                    
+                    var item2 = 'Item 2';
+                    
+                    if (lista1.Exists(item2)) {
+                        document.writeln('Sim');
+                    }
+                    else {
+                        document.writeln('Não');
+                    }
+            </pre>
+            <script>    
+                document.writeln('itemsub2 existe na lista2 ?');
+                if (lista2.Exists(itemSub2)) {
+                    document.writeln('Sim<br>');
+                }
+                else {
+                    document.writeln('Não<br>');
+                }
+                document.writeln('item2 existe na lista1 ?');
+                
+                var item2 = 'Item 2';
+                
+                if (lista1.Exists(item2)) {
+                    document.writeln('Sim<br>');
+                }
+                else {
+                    document.writeln('Não<br>');
+                }
+                
+                document.writeln( "<br>Lista1, adicionando item2 = " + lista1.Exists(item2) + "<br>");
+                lista1.Add(item2);
+                document.writeln( "<br>Lista1, adicionado item2 = " + lista1.Exists(item2) + "<br>");
+
+                document.writeln("Lista1, Removendo item2 = " + lista1.Exists(item2) + "<br>");
+                lista1.RemoveAt(2);
+                document.writeln("removido item2 , = " + lista1.Exists(item2) + "<br>");
+
+                document.writeln('lista1 Index = ' + lista1.Find(item2) + "<br>");
+                
+                var copyList = lista1;
+                
+                document.writeln('Equal = ' + lista1.Equal(lista1, copyList) + "<br>");
+                
+                document.writeln("função copylist, copiando a lista<br>");
+                copyList.ForEach(function (obj) {
+                    document.writeln(obj + "<br>");
+                }
+                );
+                
+                document.writeln("<br>Buscando o objeto copiado<br>");
+                
+                var rangeList = copyList.GetRange(2, 2);
+                
+                rangeList.ForEach(function (obj) {
+                    document.writeln(obj + "<br>");
+                }
+                );  
+            
+        </script>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+        
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 Copyright: <a class="grey-text text-lighten-4 right" href="http://www.johnnyvaz.com.br/">Johnny Vaz</a>
+                </div>
+            </div>
+        </footer>
+    </html>

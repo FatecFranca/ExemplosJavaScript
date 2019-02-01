@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+    
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Estrutura de Dados</title>
+</head>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">Estrutura de Dados</a>
+        </div>
+    </nav>
+</div>
+<body>
+    <h3>Tabela Hash</h3>
+    <p><strong>Detalhamento da implementação da tabela hash</p></strong>
+    
+    <strong>Construtor, gets e sets </strong>
+    <pre>
+        var HashEntry = function(key, value) {
+            this.key = key;
+            this.value = value;
+            this.nextEntry = undefined;
+        };
+        HashEntry.prototype = {
+            getKey : function() {
+                return this.key;
+            },
+            getValue : function() {
+                return this.value;  
+            },
+            setNext : function(entry) {
+                this.nextEntry = entry;
+            },
+            getNext : function() {
+                return this.nextEntry;
+            }
+        };
+    </pre>    
+    <script>
+        var HashEntry = function(key, value) {
+            this.key = key;
+            this.value = value;
+            this.nextEntry = undefined;
+        };
+        HashEntry.prototype = {
+            getKey : function() {
+                return this.key;
+            },
+            getValue : function() {
+                return this.value;  
+            },
+            setNext : function(entry) {
+                this.nextEntry = entry;
+            },
+            getNext : function() {
+                return this.nextEntry;
+            }
+        };
+    </script>
+    <pre>
+        Criando a tabela vazia com 100 posições
+        
+        var HashTable = function(){
+            this.tableSize = 100;
+            this.table = []; 
+        };
+        
+    </pre>
+    <script>
+        var HashTable = function(){
+            this.tableSize = 100;
+            this.table = []; 
+        };
+        
+    </script>
+    <pre>
+        <strong>Inserindo e buscando chave na tabela</strong>
+        <p>com resolução de colisão</p>
+        HashTable.prototype = {
+            hashFunction: function(input) {
+                //return an hash
+                return input % this.tableSize;
+            },
+            put : function(key, value) {
+                var hash = this.hashFunction(key);
+                var table = this.table;
+                if(table[hash] === undefined) {
+                    table[hash] = new HashEntry(key, value);
+                } else {
+                    var curr = table[hash];
+                    while(curr.getNext()!==undefined) {
+                        curr = curr.getNext();
+                    }
+                    curr.setNext(new HashEntry(key, value));
+                }
+            },
+            get : function(key) {
+                var hash = this.hashFunction(key);
+                var table = this.table;
+                var currEntry = table[hash];
+                if(currEntry === undefined) return null;
+                if(currEntry.getKey() === key) {
+                    return currEntry.getValue();
+                } else {
+                    while(currEntry.getNext()!==undefined) {
+                        currEntry = currEntry.getNext();
+                        if(currEntry.getKey() === key) {
+                            return currEntry.getValue();
+                        } 
+                    }
+                }
+            }
+        };    
+    </pre>
+    <script>
+        HashTable.prototype = {
+            hashFunction: function(input) {
+                //return an hash
+                return input % this.tableSize;
+            },
+            put : function(key, value) {
+                var hash = this.hashFunction(key);
+                var table = this.table;
+                if(table[hash] === undefined) {
+                    table[hash] = new HashEntry(key, value);
+                } else {
+                    var curr = table[hash];
+                    while(curr.getNext()!==undefined) {
+                        curr = curr.getNext();
+                    }
+                    curr.setNext(new HashEntry(key, value));
+                }
+            },
+            get : function(key) {
+                var hash = this.hashFunction(key);
+                var table = this.table;
+                var currEntry = table[hash];
+                if(currEntry === undefined) return null;
+                if(currEntry.getKey() === key) {
+                    return currEntry.getValue();
+                } else {
+                    while(currEntry.getNext()!==undefined) {
+                        currEntry = currEntry.getNext();
+                        if(currEntry.getKey() === key) {
+                            return currEntry.getValue();
+                        } 
+                    }
+                }
+            }
+        };
+    </script>
+    <pre>
+        <h3>Inserindo na tabela Hash</h3>
+        var hashTable = new HashTable();
+        hashTable.put(123, "joao");
+        hashTable.put(12, "marcos");
+        hashTable.put(112,"lucas");
+    </pre>
+    <script>
+        var hashTable = new HashTable();
+        hashTable.put(123, "joao");
+        hashTable.put(12, "marcos");
+        hashTable.put(112,"lucas");
+    </script>
+    
+    <h3>Recuperando as informações<br>
+        da tabela Hash</h3>
+        <pre>   
+            document.writeln(hashTable.get(12));
+            document.writeln(hashTable.get(112));
+            document.writeln(hashTable.get(123));
+            document.writeln(hashTable.get(134));
+            
+            <strong>Resultado:</strong>
+            
+            <script>
+                document.writeln(hashTable.get(12) + "<br>");
+                document.writeln(hashTable.get(112) + "<br>");
+                document.writeln(hashTable.get(123) + "<br>");
+                document.writeln(hashTable.get(134) + "<br>");
+                
+            </script>
+        </pre>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+        
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 Copyright: <a class="grey-text text-lighten-4 right" href="http://www.johnnyvaz.com.br/">Johnny Vaz</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+    </html>

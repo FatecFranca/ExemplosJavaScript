@@ -1,0 +1,36 @@
+{
+  "name": "JohnnyVazElectron",
+  "version": "1.0.0",
+  "description": "Sistema para Estudo de Estrutura de Dados",
+  "main": "js/main.js",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "JohnnyVaz",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^3.0.10",
+    "electron-builder": "^20.38.2",
+    "electron-winstaller": "^2.7.0"
+  },
+  "dependencies": {
+    "materialize-css": "^1.0.0",
+    "update-electron-app": "^1.3.0"
+  },
+  "build": {
+    "appId": "JohnnyVazEstDados.id",
+    "mac": {
+      "category": "Estrutura.Dados.Electron"
+    }
+  }
+}
