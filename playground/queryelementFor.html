@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>percorre tabela</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            desenhando com dados da tabela
+        </h1>
+    </header>
+    
+    <table class="table table-hover tabelaDobra">
+        <tbody>
+            <tr> 
+                <th>Item Dobra</th>    
+                <th>Tamanho</th>    
+                <th>Posição</th>   
+                <th>Canto</th>  
+            </tr>    
+            <tr>     
+                <td>1</td>    
+                <td id="tam">100</td>    
+                <td id="pos">v</td>    
+                <td>1</td>
+                <td>
+                </td>    
+            </tr>  
+            <tr>   
+                <td>2</td>  
+                <td id="tam">100</td>    
+                <td id="pos">h</td>  
+                <td>1</td>
+                <td>
+                </td>    
+            </tr>    
+            <tr>   
+                <td>2</td>  
+                <td id="tam">20</td>    
+                <td id="pos">v</td>  
+                <td>1</td>
+                <td>
+                </td>    
+            </tr> 
+            <tr>     
+                <td>4</td>   
+                <td id="tam">50</td>  
+                <td id="pos">h</td>  
+                <td>1</td>
+                <td>
+                </td>  
+            </tr>
+            <tr>     
+                <td>5</td>   
+                <td id="tam">-50</td>  
+                <td id="pos">v</td>  
+                <td>1</td>
+                <td>
+                </td>  
+            </tr>
+            <tr>     
+                <td>5</td>   
+                <td id="tam">-50</td>  
+                <td id="pos">h</td>  
+                <td>1</td>
+                <td>
+                </td>  
+            </tr>
+            <tr>     
+                <td>6</td>   
+                <td id="tam">-50</td>  
+                <td id="pos">v</td>  
+                <td>1</td>
+                <td>
+                </td>  
+            </tr>
+            <div class="box-body">
+                <div class="row"> 
+                    <canvas id="canvas" width="300" height="200">
+                        Este navegador não suporta o recurso de desenho Canvas.
+                    </canvas>
+                    <script>
+                        document.writeln("<br>");
+                        function draw(){
+                            var xini = [20,50,100]
+                            var yini = [20,50,100]
+                            let medidas = 'M' + xini[0] + ' ' + yini[0]
+                            
+                            const canvas = document.getElementById('canvas');
+                            const ctx = canvas.getContext('2d');
+                            
+                            const col = document.querySelectorAll('tr');
+                            console.log("colunas = " + col.childNodes);
+                            
+                            for(let i = 1; i < 8; i++) {
+                                medidas = medidas + ' ' + col[i].children[2].innerText + col[i].children[1].innerText + ' ';
+                            }   
+                            document.write( 'medidas ' + medidas);
+                            
+                            ///////////////////////////
+                            const tab = document.querySelector('table')
+                            console.log('childNodes = ',tab.childNodes)
+                            console.log('lenght = ',tab.leng)
+                            for(let c of col){
+                                console.log(c)
+                            }
+                            // colocar um atributo na tabela
+                            tab.setAttribute('status','liberado')
+                            //////////////
+
+                            let p = new Path2D(medidas);
+                            ctx.stroke(p);
+                        };
+                        draw();
+                        
+                    </script>
+                </div>
+            </div>
+        </div>
+    </tbody>
+</table>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <header>
+        <h1>
+            querySelector & querySelectorAll Example
+        </h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div id="col">.COL 1</div>
+            <div id="col">.COL 2</div>
+            <div id="col">.COL 3</div>
+            <div id="col">.COL 4</div>
+            <div id="col">.COL 5</div>
+        </div>
+        <div class="row">
+            <div id="exampleDiv">Example DIV</div>
+        </div>
+    </div>
+    <footer>Copyright 2018</footer>
+    <script>
+        const cols = document.querySelectorAll('#col');
+        
+        [].forEach.call(cols, (e)=>{
+            
+            document.write(e + "<br>");
+        });
+        [].forEach.call(cols, (e)=>{
+            
+            document.write(e.childNodes[0].nodeValue + "<br>")
+            
+        });
+        
+    </script>
+
+</body>
+</html>

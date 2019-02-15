@@ -6,3 +6,7 @@ Na primeira versão deste programa está disponível os algoritmos:
 - Lista Binária;
 - Hash Linear;
 - Lista Encadeada;
+- 
+
+# instalação
+
